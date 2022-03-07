@@ -1,54 +1,34 @@
 package ru.netology.domain;
 
 public class Radio {
-    private int currentVolume;
-    private int currentRadioNumber;
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
+    private int currentRadioNumber = 5;
+    private int maxRadioNumber = 9;
+    private int minRadioNumber = 0;
 
     public int getCurrentRadioNumber() {
         return currentRadioNumber;
     }
 
-    public void setCurrentRadioNumber(int currentRadioNumber) {
-        this.currentRadioNumber = currentRadioNumber;
-    }
+    public Radio() { }
 
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
+    public Radio(int countRadioNumber, int currentRadioNumber) {
+        this.currentRadioNumber = currentRadioNumber;
+        this.maxRadioNumber = minRadioNumber + countRadioNumber - 1;
+
     }
 
     public void nextRadioNumber() {
-        if (currentRadioNumber >= 0 & currentRadioNumber < 9) {
+        if (currentRadioNumber < maxRadioNumber) {
             currentRadioNumber = currentRadioNumber + 1;
-            return;
-        }
-        if (currentRadioNumber == 9) {
-            currentRadioNumber = 0;
-        }
+        } else
+            currentRadioNumber = minRadioNumber;
     }
 
-    public void increaseVolume() {
-        if (currentVolume >= 0 & currentVolume < 10) {
-            currentVolume = currentVolume + 1;
-        }
-    }
-
-    public void prevRadioNumber() {
-        if (currentRadioNumber > 0 & currentRadioNumber <= 9) {
+    public  void prevRadioNumber() {
+        if (currentRadioNumber > minRadioNumber) {
             currentRadioNumber = currentRadioNumber - 1;
-            return;
-        }
-        if (currentRadioNumber == 0) {
-            currentRadioNumber = 9;
-        }
-    }
-
-    public void decreaseVolume() {
-        if (currentVolume > 0 & currentVolume <= 10) {
-            currentVolume = currentVolume - 1;
-        }
+        } else
+            currentRadioNumber = maxRadioNumber;
     }
 }
